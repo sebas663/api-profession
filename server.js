@@ -4,7 +4,7 @@ var app         =   express();
 var bodyParser  =   require("body-parser");
 var mongoose    =   require('mongoose');
 var morgan      =   require('morgan');
-var roleRoute =   require('./routers/role');
+var professionTypeRoute  =   require('./routers/professionType');
 //For work whit environment variable.
 require('dotenv').config();
 
@@ -41,7 +41,7 @@ router.get("/",function(req,res){
     res.json({"message" : "No hay un recurso aqui!!!"});
 });
 app.use('/',router);
-app.use('/api/' + process.env.API_VERSION, roleRoute);
+app.use('/api/' + process.env.API_VERSION, professionTypeRoute);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}.`)

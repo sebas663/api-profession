@@ -2,7 +2,7 @@ var express      = require("express");
 var mongoose     = require('mongoose');
 // set Promise provider to bluebird
 mongoose.Promise = require('bluebird');
-var Profession   = require('../models/profession');
+var Profession   = require('../models/professionType');
 var validator    = require('express-route-validator')
 
 // API routes
@@ -48,7 +48,7 @@ router.route('/professions')
         }
   );
 
-router.route('/profession/:idProfession')
+router.route('/professions/:idProfession')
   .get(validator.validate({
           params: {
             idProfession: { isRequired: true , isMongoId: true }

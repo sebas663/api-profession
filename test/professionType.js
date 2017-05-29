@@ -1,13 +1,11 @@
 var mongoose     = require("mongoose");
 // set Promise provider to bluebird
 mongoose.Promise = require('bluebird');
-var Profession   = require('../models/profession');
+var Profession   = require('../models/professionType');
 //Require the dev-dependencies
 var chai         = require('chai');
 var chaiHttp     = require('chai-http');
-//var chaiAsPromised = require("chai-as-promised");
-//var server      =   require('../server');
-var server       = 'http://localhost:4200';
+
 // Add promise support if this does not exist natively.
 
 //chai.use(chaiAsPromised);
@@ -18,6 +16,8 @@ var should = chai.should();
 //For work whit environment variable.
 require('dotenv').config();
 
+var server  = process.env.API_LOCALHOST;
+
 describe('Professions', () => {
     beforeEach(() => {
         Profession.remove({}, (err) => { 
@@ -27,7 +27,7 @@ describe('Professions', () => {
   describe('/GET professions', () => {
       it('it should GET all the professions', () => {
              chai.request(server)
-            .get('/api/' + process.env.API_VERSION + '/professions')
+            .get(process.env.API_RESOURCE)
             .then(function (res) {
                 expect(res).to.have.status(200);
                 expect(res.body).to.be.a('array');
@@ -45,7 +45,7 @@ describe('Professions', () => {
                 code: "MEDICO"
             }
             chai.request(server)
-            .post('/api/' + process.env.API_VERSION + '/professions')
+            .post(process.env.API_RESOURCE)
             .send(profession)
             .then(function (res) {
                 expect(res).to.have.status(200);
@@ -63,7 +63,7 @@ describe('Professions', () => {
                 description: "Medico"
             }
             chai.request(server)
-            .post('/api/' + process.env.API_VERSION + '/professions')
+            .post(process.env.API_RESOURCE)
             .send(profession)
             .then(function (res) {
                 expect(res).to.have.status(200);
@@ -86,7 +86,7 @@ describe('Professions', () => {
                             });
         profession.save((err, profession) => {
             chai.request(server)
-            .get('/api/' + process.env.API_VERSION + '/professions/' + profession.id)
+            .get(process.env.API_RESOURCE + '/' + profession.id)
             .send(profession)
             .then(function (res) {
                 expect(res).to.have.status(200);
@@ -111,7 +111,7 @@ describe('Professions', () => {
                             })
         profession.save((err, profession) => {
                 chai.request(server)
-                .put('/api/' + process.env.API_VERSION + '/professions/' + profession.id)
+                .put(process.env.API_RESOURCE + '/' + profession.id)
                 .send({ code: "MEDICOP",
                         description: "Medico pediatrico"
                     })
@@ -138,7 +138,7 @@ describe('Professions', () => {
                             })
         profession.save((err, profession) => {
                 chai.request(server)
-                .DELETE('/api/' + process.env.API_VERSION + '/professions/' + profession.id)
+                .DELETE(process.env.API_RESOURCE + '/' + profession.id)
                 .then(function (res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('object');
