@@ -14,8 +14,8 @@ http://ip:port/api/{version}/professions<br />
 GET<br />
 POST<br />
 GET:id<br />
-PUT<br />
-DELETE
+PUT:id<br />
+DELETE:id
 
 ## Tests
 In git bash in root folder ~ api-professionType:<br />
