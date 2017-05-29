@@ -1,11 +1,11 @@
-## api-profession
+## api-professionType
 
-This is a simple CRUD Api for types of documents of identity.
+This is a simple CRUD Api for types of professions.
 
 ## Installation
 In git bash<br />
-git clone https://github.com/sebas663/api-profession.git<br />
-cd root folder ~ api-profession<br />
+git clone https://github.com/sebas663/api-professionType.git<br />
+cd root folder ~ api-professionType<br />
 npm install
 
 ## API Reference
@@ -19,5 +19,5 @@ PUT<br />
 DELETE
 
 ## Tests
-In git bash in root folder ~ api-profession:<br />
+In git bash in root folder ~ api-professionType:<br />
 npm test
