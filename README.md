@@ -13,7 +13,6 @@ npm install
 http://ip:port/api/{version}/professions<br />
 GET<br />
 POST<br />
-http://ip:port/api/{version}/profession<br />
 GET:id<br />
 PUT<br />
 DELETE
